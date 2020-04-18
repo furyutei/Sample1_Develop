@@ -1,0 +1,6 @@
+.gitignore export-ignore
+.gitattributes export-ignore
+README.md export-ignore
+config/* export-ignore
+src/開発専用ファイル.txt export-ignore
+
