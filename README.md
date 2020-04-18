@@ -1,7 +1,7 @@
 開発用ブランチと公開用ブランチとでリポジトリを分けるサンプル
 ============================================================
 
-- こちらは【開発用】です  
+- こちらは【開発用】です（[【公開用】サンプルはこちら](https://github.com/furyutei/Sample1_Release) ） 
 - 開発用には「公開専用ファイル.txt」は含まれません。また、「環境依存ファイル.txt」は内容が異なっています。  
 
 ## 目的
@@ -59,6 +59,20 @@ $ git push -u release public
 ```
 
 ※ここでは、public ブランチを releace リポジトリに push して公開している。  
+
+
+### 開発用ブランチの更新を公開用に反映
+
+master → public に checkout 後、master 上のファイルを git archive 経由で上書きし、add → commit → push を実施。  
+※このとき、.gitattributes で export-ignore で指定したファイルについては除外される
+
+```sh
+$ git checkout public
+$ git archive --format=tar master | tar -xv
+$ git add .
+$ git commit -m "開発用ブランチの更新を反映"
+$ git push -u release public
+```
 
 
 ## ライセンス
